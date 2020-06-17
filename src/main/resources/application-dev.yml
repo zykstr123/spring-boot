@@ -1,0 +1,13 @@
+server:
+  port: 8080
+  path: /hello
+
+spring:
+  application:
+    name: springbootdemo
+
+  rabbitmq:
+    host: 117.48.196.40
+    port: 5672
+    username: user
+    password: password
