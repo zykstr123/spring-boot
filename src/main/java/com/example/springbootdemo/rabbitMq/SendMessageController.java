@@ -1,4 +1,4 @@
-package com.example.springbootdemo.controller;
+package com.example.springbootdemo.rabbitMq;
 
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +26,9 @@ public class SendMessageController {
         map.put("messageId", messageId);
         map.put("messageData", messageData);
         map.put("createTime", createTime);
+        System.out.println(rabbitTemplate.getExchange());
         //将消息携带绑定键值：TestDirectRouting 发送到交换机TestDirectExchange
-        rabbitTemplate.convertAndSend("TestDirectExchange", "TestDirectRouting", map);
+        rabbitTemplate.convertAndSend("TestDirectExchange", "test", map);
         return "ok";
     }
 }
