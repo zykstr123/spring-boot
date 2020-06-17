@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springbootdemo.mapper.GirlMapper">
+    <resultMap id="GirlResultMap" type="com.example.springbootdemo.entity.Girl">
+        <id column="id" property="id"/>
+        <result column="age" property="age"/>
+        <result column="name" property="name"/>
+        <result column="score" property="score"/>
+    </resultMap>
+
+    <sql id="baseColume">
+        age, name, score
+    </sql>
+
+    <select id="getGirlByname" parameterType="String" resultMap="GirlResultMap">
+        select * from girl where name = #{name}
+    </select>
+
+    <insert id="insert" parameterType="com.example.springbootdemo.entity.Girl">
+        insert into Girl (<include refid="baseColume"/>) values (#{age}, #{name}, #{score})
+    </insert>
+</mapper>

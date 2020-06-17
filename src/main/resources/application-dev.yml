@@ -13,9 +13,9 @@ spring:
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/major_db?useUnicode=true&characterEncoding=UTF-8
+    url: jdbc:mysql://localhost:3306/zyk?useUnicode=true&characterEncoding=UTF-8
     username: root
-    password: rootbbyy
+    password: zhoustr1
     max-idle: 10
     max-wait: 10000
     min-idle: 5
@@ -28,3 +28,7 @@ spring:
     num-tests-per-eviction-run: 5
     remove-abandoned: true
     remove-abandoned-timeout: 180
+
+mybatis:
+  type-aliases-package: com.example.springbootdemo.entity
+  mapper-locations: classpath:mapper/*Mapper.xml
