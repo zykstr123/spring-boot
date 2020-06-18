@@ -5,6 +5,12 @@ spring:
   application:
     name: springbootdemo
 
+  redis:
+    database: 0
+    host: localhost
+    port: 6379
+    timeout: 1000
+
   rabbitmq:
     host: 117.48.196.40
     port: 5672
