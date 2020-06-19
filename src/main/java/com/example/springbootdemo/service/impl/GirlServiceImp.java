@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class GirlServiceImp implements GirlService {
@@ -23,6 +24,7 @@ public class GirlServiceImp implements GirlService {
     ApplicationEventPublisher applicationEventPublisher;
 
     @Override
+    @Transactional
     public Integer add(Girl girl) {
         GirlEvent girlEvent = new GirlEvent(this, girl);
         applicationContext.publishEvent(girlEvent);
