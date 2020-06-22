@@ -1,6 +1,6 @@
 package com.example.springbootdemo.asyn;
 
-import com.example.springbootdemo.common.CommonThreadPool;
+import com.example.springbootdemo.pool.CommonThreadPool;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
