@@ -6,8 +6,7 @@ import org.slf4j.LoggerFactory;
 import java.util.concurrent.*;
 
 public class CommonThreadPool {
-    static ThreadPoolExecutor executor = null;
-    static volatile BlockingQueue<Runnable> workQueue = null;
+    static volatile ThreadPoolExecutor executor = null;
     private static final Logger log = LoggerFactory.getLogger(CommonThreadPool.class);
     /**
      * 队列容量
@@ -22,18 +21,16 @@ public class CommonThreadPool {
      */
     final static int MAX_POOL_SIZE = 10;
 
+    //  单例模式
     static void init() {
         try {
-            if (workQueue == null) {
+            if (executor == null) {
                 synchronized (CommonThreadPool.class) {
-                    if (workQueue == null) {
-                        workQueue = new LinkedBlockingQueue<>(THREAD_QUEUE_SIZE);
+                    if (executor == null) {
+                        executor = new ThreadPoolExecutor(CORE_POOL_SIZE, MAX_POOL_SIZE, 10, TimeUnit.SECONDS, new LinkedBlockingQueue<>(THREAD_QUEUE_SIZE));
+                        executor.allowCoreThreadTimeOut(true);
                     }
                 }
-            }
-            if (executor == null) {
-                executor = new ThreadPoolExecutor(CORE_POOL_SIZE, MAX_POOL_SIZE, 10, TimeUnit.SECONDS, workQueue);
-                executor.allowCoreThreadTimeOut(true);
             }
         } catch (Exception t) {
             log.error("初始化线程池时出现异常......" + t.getMessage(), t);
@@ -41,7 +38,7 @@ public class CommonThreadPool {
     }
 
     public static void execute(Runnable runnable) {
-        if (executor == null || workQueue == null) {
+        if (executor == null) {
             init();
         }
         executor.execute(runnable);
