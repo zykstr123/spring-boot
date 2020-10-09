@@ -19,4 +19,8 @@
     <insert id="insert" parameterType="com.example.springbootdemo.entity.Girl">
         insert into Girl (<include refid="baseColume"/>) values (#{age}, #{name}, #{score})
     </insert>
+
+    <insert id="increase" parameterType="Integer">
+        update Girl set score = score + 1 where id = #{id}
+    </insert>
 </mapper>

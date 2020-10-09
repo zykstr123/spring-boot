@@ -7,4 +7,6 @@ public interface GirlService {
     Integer add(Girl girl);
 
     Girl getGirlByName(String name);
+
+    Girl increase(Integer id);
 }

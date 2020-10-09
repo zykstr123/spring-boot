@@ -9,4 +9,6 @@ public interface GirlMapper {
     Integer insert(@Param("girl") Girl girl);
 
     Girl getGirlByname(@Param("name") String name);
+
+    Integer increase(@Param("id") Integer id);
 }

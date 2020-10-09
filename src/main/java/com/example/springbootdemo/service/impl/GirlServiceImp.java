@@ -38,4 +38,20 @@ public class GirlServiceImp implements GirlService {
         applicationEventPublisher.publishEvent(girlEvent);
         return girl;
     }
+
+    @Override
+    public Girl increase(Integer id) {
+        Thread thread = new Thread(() -> {
+            for (int i = 0; i < 150; i ++) {
+                girlMapper.increase(id);
+            }
+        });
+        thread.start();
+        for (int i = 0; i < 150; i ++) {
+            girlMapper.increase(id);
+        }
+        return null;
+    }
+
+
 }
