@@ -11,6 +11,6 @@ public class GirlListener {
     @EventListener(classes = GirlEvent.class)
     @Async
     void writeLog(GirlEvent girlEvent) {
-        System.out.println("log event: " + girlEvent.getGirl());
+//        System.out.println("log event: " + girlEvent.getGirl());
     }
 }

@@ -1,9 +1,10 @@
-package com.example.springbootdemo.json;
+package com.example.springbootdemo.fun.json;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.HashMap;
 import java.util.Map;
+
 
 public class JsonTry {
     public static void main(String[] args) {
